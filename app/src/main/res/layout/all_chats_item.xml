@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="chatUser"
+            type="com.example.local.database.ChatUser" />
+
+        <variable
+            name="clickChatUserListener"
+            type="com.example.local.ui.allchatsscreen.ChatUserListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:onClick="@{() -> clickChatUserListener.onClick(chatUser)}">
+
+        <ImageView
+            android:id="@+id/user_image"
+            android:layout_width="@dimen/user_img_size_W_all_chats"
+            android:layout_height="@dimen/user_img_size_H_all_chats"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.012"
+            app:chatUserImage="@{chatUser}"
+            tools:srcCompat="@drawable/ic_user" />
+
+        <TextView
+            android:id="@+id/user_name_all_chat_item"
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/user_image"
+            app:layout_constraintTop_toTopOf="@+id/user_image"
+            app:chatUserName="@{chatUser}"
+            tools:text="Aastha Kapoor" />
+
+        <TextView
+            android:id="@+id/last_message_all_chats_item"
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/user_image"
+            app:layout_constraintTop_toBottomOf="@+id/user_name_all_chat_item"
+            app:chatUserLastMessage="@{chatUser}"
+            tools:text="Thanks for your message!" />
+
+        <View
+            android:id="@+id/horizontal_divider_all_chats_item"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintBottom_toBottomOf="@+id/user_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/user_image" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
