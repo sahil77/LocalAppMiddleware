@@ -1,41 +1,41 @@
 package com.example.local.database
 
-import android.graphics.Bitmap
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import androidx.room.TypeConverters
-
+import com.example.local.R
+import com.example.local.saveImageToInternalStorage
 
 @Entity(tableName = "tbl_chat_users")
-@TypeConverters(Converters::class)
 data class ChatUser(
     @PrimaryKey
     @ColumnInfo(name="user_id")
     var userId: Long = 0L,
 
     @ColumnInfo(name = "user_name")
-    val userName: String = "",
+    var userName: String = "",
 
     //setting the same to default for and will change later when the image part will be implemented
-    @ColumnInfo(name = "user_image")
-    var userImage: Bitmap,
+    //will keep the userId as the name of the file for the user image and will save the file on
+    //internal storage of app using the same name
+    @ColumnInfo(name = "user_image_APath")
+    var userImage: String = "default",
     //var userImage: Bitmap = getDefaultChatUserImage(),
 
     @ColumnInfo(name = "last_updated_message")
-    val lastMessage: String = "",
+    var lastMessage: String = "",
 
     @ColumnInfo(name = "last_updated_datetime")
-    val lastUpdatedTime: Long = System.currentTimeMillis(),
+    var lastUpdatedTime: Long = System.currentTimeMillis(),
 
     @ColumnInfo(name = "business_profile")
-    val businessProfile: Boolean = false,
+    var businessProfile: Boolean = false,
 
     @ColumnInfo(name = "business_category")
-    val businessCategory: String = "NA",
+    var businessCategory: String = "NA",
 
     @ColumnInfo(name = "verified")
-    val businessVerified: Boolean = false
+    var businessVerified: Boolean = false
 
 )
 
@@ -59,38 +59,37 @@ data class ChatMessage(
     var messageType: String = "TEXT",
 
     @ColumnInfo(name = "message")
-    val lastMessage: String = "",
+    var lastMessage: String = "",
 
     @ColumnInfo(name = "last_updated_datetime")
-    val lastUpdatedTime: Long = System.currentTimeMillis()
+    var lastUpdatedTime: Long = System.currentTimeMillis()
 
 )
 
 @Entity(tableName = "tbl_my_user_profile")
-@TypeConverters(Converters::class)
 data class MyUserProfile(
     @PrimaryKey
     @ColumnInfo(name="my_user_id")
     var myUserId: Long = 0L,
 
     @ColumnInfo(name = "my_user_name")
-    val myUserName: String = "",
+    var myUserName: String = "",
 
     //setting the same to default for and will change later when the image part will be implemented
-    @ColumnInfo(name = "my_user_image")
-    var userImage: Bitmap,
+    @ColumnInfo(name = "user_image_APath")
+    var userImage: String = "default",
     //var userImage: Bitmap = getDefaultChatUserImage(),
 
     @ColumnInfo(name = "last_updated_datetime")
-    val lastUpdatedTime: Long = System.currentTimeMillis(),
+    var lastUpdatedTime: Long = System.currentTimeMillis(),
 
     @ColumnInfo(name = "business_profile")
-    val myBusinessProfile: Boolean = false,
+    var myBusinessProfile: Boolean = false,
 
     @ColumnInfo(name = "business_category")
-    val myBusinessCategory: String = "NA",
+    var myBusinessCategory: String = "NA",
 
     @ColumnInfo(name = "verified")
-    val myBusinessVerified: Boolean = false
+    var myBusinessVerified: Boolean = false
 
 )

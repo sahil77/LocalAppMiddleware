@@ -4,10 +4,12 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.local.database.ChatUser
 import com.example.local.database.DAO
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
+import com.example.local.insertChatMessage
+import com.example.local.insertChatUser
+import com.example.local.insertMyUserProfile
+import kotlinx.coroutines.*
 
 class AllChatsViewModel(
     databaseDao: DAO, application: Application) : AndroidViewModel(application) {
@@ -16,6 +18,7 @@ class AllChatsViewModel(
      * viewModelJob allows us to cancel all coroutines started by this ViewModel.
      */
     private var allChatsViewModelJob = Job()
+
 
     /**
      * A [Co routine Scope] keeps track of all coroutines started by this ViewModel.
@@ -31,6 +34,44 @@ class AllChatsViewModel(
 
     val allChatUsers = databaseDao.getAllChatUsers()
 
+    /** Only for testing**/
+
+    fun addUsersForTest(dataSourceDao: DAO) {
+        uiScope.launch {
+            addUsersTemp(dataSourceDao)
+        }
+    }
+
+    private suspend fun addUsersTemp(dataSourceDao: DAO) {
+        withContext(Dispatchers.IO) {
+            insertChatUser(dataSourceDao, 9899929920)
+            insertChatUser(dataSourceDao, 9899929921)
+            insertChatUser(dataSourceDao, 9899929922)
+            insertChatUser(dataSourceDao, 9899929923)
+            insertChatUser(dataSourceDao, 9899929924)
+            insertChatUser(dataSourceDao, 9899929925)
+            insertChatUser(dataSourceDao, 9899929926)
+            insertChatUser(dataSourceDao, 9899929927)
+            insertChatUser(dataSourceDao, 9899929929)
+            insertChatUser(dataSourceDao, 9899929933)
+            insertChatUser(dataSourceDao, 9899929934)
+            insertChatUser(dataSourceDao, 9899929935)
+            insertChatUser(dataSourceDao, 9899929936)
+            insertChatUser(dataSourceDao, 9899929937)
+
+            insertMyUserProfile(dataSourceDao, 9899929920)
+
+            insertChatMessage(dataSourceDao, 9899929921, true, "Hi Sahil")
+            insertChatMessage(dataSourceDao, 9899929920, false, "I am good thanks")
+            insertChatMessage(dataSourceDao, 9899929921, true, "Where are u these days?")
+            insertChatMessage(dataSourceDao, 9899929922, true, "Hi Sunny")
+            insertChatMessage(dataSourceDao, 9899929923, true, "Hi Sahil")
+            insertChatMessage(dataSourceDao, 9899929933, true, "Hello")
+
+
+
+        }
+    }
 
     /** Handling the click event of the Chat list item in the recycler view of All Chats Fragment
      * **/

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="user_img_size_all_chats">64dp</dimen>
-    <dimen name="user_img_size_H_all_chats">60dp</dimen>
-    <dimen name="user_img_size_W_all_chats">64dp</dimen>
+    <dimen name="user_img_size_H_all_chats">54dp</dimen>
+    <dimen name="user_img_size_W_all_chats">60dp</dimen>
 </resources>

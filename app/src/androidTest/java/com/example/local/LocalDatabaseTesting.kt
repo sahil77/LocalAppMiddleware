@@ -45,7 +45,7 @@ class LocalDatabaseTesting {
 
     @Test
     @Throws(Exception::class)
-    fun insertAndGetNight() {
+    fun insertAndGetUser() {
         val chatUser = ChatUser()
         localDao.insertChatUser(chatUser)
         val userReturn = localDao.getAllChatUsersRecent()

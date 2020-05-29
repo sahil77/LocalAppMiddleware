@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.local.database.LocalDatabase
 import com.example.local.R
 import com.example.local.databinding.AllChatsFragmentBinding
+import com.example.local.insertChatUser
 
 class AllChatsFragment : Fragment() {
 
@@ -21,6 +22,8 @@ class AllChatsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+
 
         // Get a reference to the binding object and inflate the fragment layout view
         val binding: AllChatsFragmentBinding = DataBindingUtil.inflate(
@@ -32,6 +35,7 @@ class AllChatsFragment : Fragment() {
         //Database is created when this is called
         val dataSourceDao = LocalDatabase.getInstance(application).chatDatabaseDAO
 
+
         val viewModelFactory = AllChatsViewModelFactory(dataSourceDao, application)
 
         val allChatsViewModel= ViewModelProviders.of(
@@ -39,6 +43,9 @@ class AllChatsFragment : Fragment() {
 
         binding.viewModel = allChatsViewModel
         binding.lifecycleOwner = this
+
+        //TEst data
+        //allChatsViewModel.addUsersForTest(dataSourceDao)
 
         //For actual implementation, passing the click event value to the View Model
         val adapter = ChatUserAdapter(ChatUserListener {
@@ -60,6 +67,17 @@ class AllChatsFragment : Fragment() {
                 allChatsViewModel.onChatClickedNavigated()
             }
         })
+
+        //observer so that we know when the data is updated for nights
+        //and, assigns value to the adapter data on change
+        allChatsViewModel.allChatUsers.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                //calling the adapter and notify when the nights object is changed
+                //submit list because the adapter inherits from List Adapter
+                adapter.submitList(it)
+            }
+        })
+
 
 
         //returns the view that got bind
