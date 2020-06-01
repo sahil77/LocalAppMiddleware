@@ -52,9 +52,11 @@ interface DAO {
     @Query("SELECT * FROM tbl_chat_messages ORDER BY last_updated_datetime DESC")
     fun getAllChatMessages(): LiveData<List<ChatMessage>>
 
-    @Query("SELECT * from tbl_chat_messages WHERE message_id = :key")
-    fun getChatMessageWithId(key: Long): LiveData<ChatMessage>
+    @Query("SELECT * from tbl_chat_messages WHERE user_id = :key ORDER BY last_updated_datetime ASC")
+    fun getChatMessageWithId(key: Long): LiveData<List<ChatMessage>>
 
+    @Query("UPDATE tbl_chat_users set last_updated_message = :message, last_updated_datetime = :lastUpdatedTime WHERE user_id = :userId")
+    fun updateChatUserLastMessage(message: String, userId: Long, lastUpdatedTime: Long)
 
     /**
     For MyUserProfile Class

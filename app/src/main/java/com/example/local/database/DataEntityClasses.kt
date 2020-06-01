@@ -3,8 +3,8 @@ package com.example.local.database
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.local.R
 import com.example.local.saveImageToInternalStorage
+import java.util.*
 
 @Entity(tableName = "tbl_chat_users")
 data class ChatUser(
@@ -62,8 +62,28 @@ data class ChatMessage(
     var lastMessage: String = "",
 
     @ColumnInfo(name = "last_updated_datetime")
-    var lastUpdatedTime: Long = System.currentTimeMillis()
+    var lastUpdatedTime: Long = System.currentTimeMillis(),
 
+    //0 --> Not sent, 1 --> Sent, 2 --> Delivered, and 3 --> Read
+    @ColumnInfo(name = "message_status")
+    var messageStatus: Int = 0
+)
+
+@Entity(tableName = "tbl_chat_messages_status")
+data class ChatMessageStatus(
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name="message_status_id")
+    var messageStatusId: Long,
+
+    @ColumnInfo(name="message_id")
+    var messageId: Long = 0L,
+
+    //0 --> Not sent, 1 --> Sent, 2 --> Delivered, and 3 --> Read
+    @ColumnInfo(name = "message_status")
+    var messageStatus: Int = 0,
+
+    @ColumnInfo(name = "last_updated_datetime")
+    var messageLastUpdatedTime: Long = System.currentTimeMillis()
 )
 
 @Entity(tableName = "tbl_my_user_profile")

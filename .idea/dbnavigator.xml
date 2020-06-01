@@ -24,27 +24,39 @@
     <autoscroll-from-editor value="true" />
     <show-object-properties value="false" />
     <loaded-nodes>
-      <connection connection-id="eb2f392f-4594-4473-88fe-3d08703298d0">
+      <connection connection-id="0c6565a8-83c4-487b-ac3d-d0523fdb8cd5">
         <schema name="main" object-types="constraint, dataset trigger, index, view, table, column" />
       </connection>
     </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
-    <connection id="eb2f392f-4594-4473-88fe-3d08703298d0">
-      <console name="Local" type="STANDARD" schema="main" session="Main"><![CDATA[select * from tbl_chat_users
+    <connection id="0c6565a8-83c4-487b-ac3d-d0523fdb8cd5">
+      <console name="LocalVer2" type="STANDARD" schema="main" session="Main"><![CDATA[Delete from tbl_chat_messages
 
-update tbl_chat_users set user_name = "Jason Herter" where user_id like '%37']]></console>
-    </connection>
-    <connection id="bec82b07-993f-4e09-a4f1-fbca5fe8e3cb">
-      <console name="Connection" type="STANDARD" schema="main" session="Main" />
+select * from tbl_chat_messages
+
+select * from tbl_chat_users
+
+SELECT convert('epoch', CURRENT_TIMESTAMP)::Long;
+
+INSERT INTO tbl_chat_messages(message_id, user_id, message_inward_flow, message_type, message, last_updated_datetime, message_status)
+VALUES (12, 9899929921, 0, 'TEXT', 'Yes!', 1590853525876,1)
+
+update tbl_chat_users set user_name = 'Money Verma' where user_id = 9899929937
+
+update tbl_chat_messages set last_updated_datetime = 1590853482187 where message_id = 3
+
+update tbl_chat_users set last_updated_message = 'Hello', last_updated_datetime = 1590853525876 where user_id = 9899929937]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
     <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
-    <connection id="eb2f392f-4594-4473-88fe-3d08703298d0" />
-    <connection id="bec82b07-993f-4e09-a4f1-fbca5fe8e3cb" />
+    <connection id="0c6565a8-83c4-487b-ac3d-d0523fdb8cd5" />
+  </component>
+  <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-actions connection-id="0c6565a8-83c4-487b-ac3d-d0523fdb8cd5" dataset="main.tbl_chat_messages" active-filter-id="" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
@@ -69,9 +81,9 @@ update tbl_chat_users set user_name = "Jason Herter" where user_id like '%37']]>
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-      <connection id="eb2f392f-4594-4473-88fe-3d08703298d0" active="true">
+      <connection id="0c6565a8-83c4-487b-ac3d-d0523fdb8cd5" active="true">
         <database>
-          <name value="Local" />
+          <name value="LocalVer2" />
           <description value="" />
           <database-type value="SQLITE" />
           <config-type value="BASIC" />
@@ -84,95 +96,9 @@ update tbl_chat_users set user_name = "Jason Herter" where user_id like '%37']]>
           <port value="1234" />
           <database value="database" />
           <files>
-            <file path="$USER_HOME$/Desktop/Local DB Files/local_chat_database" schema="main" />
-            <file path="$USER_HOME$/Desktop/Local DB Files/local_chat_database-shm" schema="" />
-            <file path="$USER_HOME$/Desktop/Local DB Files/local_chat_database-wal" schema="" />
-          </files>
-          <type value="NONE" />
-          <user value="" />
-          <deprecated-pwd value="" />
-        </database>
-        <properties>
-          <auto-commit value="true" />
-        </properties>
-        <ssh-settings>
-          <active value="false" />
-          <proxy-host value="" />
-          <proxy-port value="22" />
-          <proxy-user value="" />
-          <deprecated-proxy-pwd value="" />
-          <auth-type value="PASSWORD" />
-          <key-file value="" />
-          <key-passphrase value="" />
-        </ssh-settings>
-        <ssl-settings>
-          <active value="false" />
-          <certificate-authority-file value="" />
-          <client-certificate-file value="" />
-          <client-key-file value="" />
-        </ssl-settings>
-        <details>
-          <charset value="UTF-8" />
-          <session-management value="true" />
-          <ddl-file-binding value="true" />
-          <database-logging value="false" />
-          <connect-automatically value="true" />
-          <restore-workspace value="true" />
-          <restore-workspace-deep value="true" />
-          <environment-type value="default" />
-          <idle-time-to-disconnect value="30" />
-          <idle-time-to-disconnect-pool value="5" />
-          <credential-expiry-time value="10" />
-          <max-connection-pool-size value="7" />
-          <alternative-statement-delimiter value="" />
-        </details>
-        <object-filters hide-empty-schemas="false" hide-pseudo-columns="false">
-          <object-type-filter use-master-settings="true">
-            <object-type name="SCHEMA" enabled="true" />
-            <object-type name="USER" enabled="true" />
-            <object-type name="ROLE" enabled="true" />
-            <object-type name="PRIVILEGE" enabled="true" />
-            <object-type name="CHARSET" enabled="true" />
-            <object-type name="TABLE" enabled="true" />
-            <object-type name="VIEW" enabled="true" />
-            <object-type name="MATERIALIZED_VIEW" enabled="true" />
-            <object-type name="NESTED_TABLE" enabled="true" />
-            <object-type name="COLUMN" enabled="true" />
-            <object-type name="INDEX" enabled="true" />
-            <object-type name="CONSTRAINT" enabled="true" />
-            <object-type name="DATASET_TRIGGER" enabled="true" />
-            <object-type name="DATABASE_TRIGGER" enabled="true" />
-            <object-type name="SYNONYM" enabled="true" />
-            <object-type name="SEQUENCE" enabled="true" />
-            <object-type name="PROCEDURE" enabled="true" />
-            <object-type name="FUNCTION" enabled="true" />
-            <object-type name="PACKAGE" enabled="true" />
-            <object-type name="TYPE" enabled="true" />
-            <object-type name="TYPE_ATTRIBUTE" enabled="true" />
-            <object-type name="ARGUMENT" enabled="true" />
-            <object-type name="DIMENSION" enabled="true" />
-            <object-type name="CLUSTER" enabled="true" />
-            <object-type name="DBLINK" enabled="true" />
-          </object-type-filter>
-          <object-name-filters />
-        </object-filters>
-      </connection>
-      <connection id="bec82b07-993f-4e09-a4f1-fbca5fe8e3cb" active="true">
-        <database>
-          <name value="Connection" />
-          <description value="" />
-          <database-type value="SQLITE" />
-          <config-type value="BASIC" />
-          <database-version value="3.21" />
-          <driver-source value="BUILTIN" />
-          <driver-library value="" />
-          <driver value="" />
-          <url-type value="FILE" />
-          <host value="localhost" />
-          <port value="1234" />
-          <database value="database" />
-          <files>
-            <file path="$USER_HOME$/Documents/AndroidStudio/DeviceExplorer/Pixel_2_API_29 [emulator-5554]/data/data/com.example.local/databases" schema="main" />
+            <file path="$USER_HOME$/Desktop/DB/local_chat_database" schema="main" />
+            <file path="$USER_HOME$/Desktop/DB/local_chat_database-shm" schema="" />
+            <file path="$USER_HOME$/Desktop/DB/local_chat_database-wal" schema="" />
           </files>
           <type value="NONE" />
           <user value="" />

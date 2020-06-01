@@ -6,6 +6,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.example.local.R
+import com.example.local.convertLongToTime
+import com.example.local.database.ChatMessage
 import com.example.local.database.ChatUser
 
 //Binding the App level Parameters to the Data Entity Object called Chat User Class
@@ -33,5 +35,21 @@ fun TextView.chatUserName(item: ChatUser?) {
 fun TextView.chatUserLastMessage(item: ChatUser?) {
     item?.let {
         text = item.lastMessage
+    }
+}
+
+
+//Detailed Chat Screen Adapter and Screen
+@BindingAdapter("chatMessageText")
+fun TextView.chatMessageText(item: ChatMessage?) {
+    item?.let {
+        text = item.lastMessage
+    }
+}
+
+@BindingAdapter("chatMessageTime")
+fun TextView.chatMessageTime(item: ChatMessage?) {
+    item?.let {
+        text = convertLongToTime(item.lastUpdatedTime)
     }
 }

@@ -1,6 +1,5 @@
 package com.example.local
 
-import android.R.attr
 import android.content.Context
 import android.content.ContextWrapper
 import android.graphics.Bitmap
@@ -8,12 +7,9 @@ import android.graphics.Bitmap.CompressFormat
 import android.graphics.BitmapFactory
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
-import android.net.Uri
+import android.icu.text.SimpleDateFormat
 import android.os.Build
-import android.os.storage.StorageManager
 import androidx.annotation.RequiresApi
-import androidx.core.content.ContextCompat
-import androidx.core.content.getSystemService
 import com.example.local.database.ChatMessage
 import com.example.local.database.ChatUser
 import com.example.local.database.DAO
@@ -67,6 +63,12 @@ fun saveImageToInternalStorage(drawable:Int, applicationContext: Context): Strin
 
 //// Display the internal storage saved image in image view
 //image_view_saved.setImageURI(uri)
+
+fun convertLongToTime(time: Long): String {
+    val date = Date(time)
+    val format = java.text.SimpleDateFormat("HH:mm")
+    return format.format(date)
+}
 
 //Create Test Data when app launches
 fun insertChatUser(localDao: DAO, mobileNumber: Long) {

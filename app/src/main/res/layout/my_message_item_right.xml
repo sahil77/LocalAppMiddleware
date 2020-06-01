@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="chatMessage"
+            type="com.example.local.database.ChatMessage" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_margin="5dp"
+        android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:background="@drawable/my_message_bubble"
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
+
+        <TextView
+            android:id="@+id/chat_Text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:gravity="center"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:hint="My message ..."
+            android:textSize="15sp"
+            app:chatMessageText="@{chatMessage}"/>
+
+        <TextView
+            android:id="@+id/chat_Time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:hint="chat time"
+            android:paddingTop="0dp"
+            android:textSize="10sp"
+            app:chatMessageTime="@{chatMessage}" />
+    </LinearLayout>
+    </LinearLayout>
+</layout>
